@@ -156,7 +156,7 @@ export default {
   created() {
     // Fetching lesson data when the Vue instance is created
     // Initializing 'lessons' data property with fetched data
-    fetch('lessons.json')
+    fetch('https://web-app-coursework-2.vercel.app/lessons')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -165,6 +165,7 @@ export default {
       })
       .then(data => {
         this.lessons = data;
+        this.searchResults = data;
       })
       .catch(error => {
         console.error('Error loading JSON data', error);
@@ -226,7 +227,6 @@ export default {
   computed: {
     // Filter lessons based on the search query
     filteredLessons() {
-      console.log("filtered triggered!")
       if (!this.lessons) {
         return []; // Return an empty array if lessons is null
       }
@@ -254,8 +254,6 @@ export default {
 
     // Sort lessons based on selected option
     sortedLessons() {
-      console.log("sorted triggered!")
-
       // Gather all the necessary data
       const FILTERED_LESSONS = this.filteredLessons;
       const ATTRIBUTE_TO_SORT_BY = this.sortOption;
@@ -273,8 +271,6 @@ export default {
 
     // Order lessons based on selected option (ascending/descending)
     orderedLessons() {
-      console.log("ordered triggered!")
-
       // Gather necessary data
       // Creating a copy, as .reverse() changes array in-place
       const SORTED_LESSONS = this.sortedLessons.slice();
@@ -291,7 +287,6 @@ export default {
 
     // Check if the cart is empty
     isCartEmpty() {
-      console.log("Cart empty?" + !Object.keys(this.cart).length)
       return !Object.keys(this.cart).length;
     }
   }
