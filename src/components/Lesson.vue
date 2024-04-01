@@ -64,7 +64,7 @@ export default {
         addToCart(lessonId) {
             this.$emit('add-item-to-cart', lessonId);
         },
-        removeFromCart(lessonId){
+        removeFromCart(lessonId) {
             this.$emit('remove-item-from-cart', lessonId);
         }
     }
