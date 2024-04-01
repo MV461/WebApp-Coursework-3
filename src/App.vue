@@ -204,97 +204,8 @@
               v-model="search">
             <!-- Search Bar END -->
 
-            <div v-if="lessons">
+            <Lesson :lessons="orderedLessons" :cart="cart" @add-item-to-cart="addToCart" @remove-item-from-cart="removeFromCart" />
 
-              <!-- Card Group START -->
-              <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-                <!-- Card Column START -->
-                <div class="col" v-for="lesson in orderedLessons" :key="lesson.id">
-
-                  <!-- Card START -->
-                  <div class="card text-center">
-                    <!-- Card Row START -->
-                    <div class="row g-0">
-
-                      <!-- Card Col 1 START -->
-                      <div class="col-md-4 d-flex justify-content-center align-items-center">
-
-                        <!-- Card Icon START -->
-                        <span class="card-icon p-2">
-                          <i :class="lesson.icon"></i>
-                        </span>
-                        <!-- Card Icon END -->
-
-                      </div>
-                      <!-- Card Col 1 END -->
-
-                      <!-- Card Col 2 START -->
-                      <div class="col-md-8 bg-light">
-
-                        <!-- Card Header START -->
-                        <div class="card-header">
-                          {{ lesson.subject }} Lessons
-                        </div>
-                        <!-- Card Header END -->
-
-                        <!-- Card Body START -->
-                        <div class="card-body">
-
-                          <table class="table table-bordered">
-                            <tbody>
-                              <tr>
-                                <td><strong>Location</strong></td>
-                                <td>{{ lesson.location }}</td>
-                              </tr>
-                              <tr>
-                                <td><strong>Price</strong></td>
-                                <td>{{ lesson.price }} AED</td>
-                              </tr>
-                              <tr>
-                                <td><strong>Available Spaces</strong></td>
-                                <td>{{ lesson.spaces }}</td>
-                              </tr>
-                            </tbody>
-                          </table>
-
-                        </div>
-                        <!-- Card Body END -->
-
-                        <div class="card-footer">
-                          <!-- "Add to Cart" Button START -->
-                          <button @click="addToCart(lesson.id)" :disabled="lesson.spaces === 0"
-                            class="btn btn-primary m-2">
-                            {{ lesson.spaces === 0 ? 'No Spaces Available' : 'Add to Cart'
-                            }}
-                          </button>
-                          <!-- "Remove from Cart" Button END -->
-                          <button v-if="cart[lesson.id]" @click="removeFromCart(lesson.id)" class="btn btn-danger m-2">
-                            Remove from Cart
-                          </button>
-                          <!-- "Remove from Cart" Button END -->
-
-                        </div>
-
-                      </div>
-                      <!-- Card Col 2 END -->
-
-
-                    </div>
-                    <!-- Card Row END -->
-
-                  </div>
-                  <!-- Card END -->
-
-                </div>
-                <!-- Card Column START -->
-              </div>
-              <!-- Card Group END -->
-            </div>
-
-            <div v-else>
-              <h1>Loading JSON data...</h1>
-            </div>
 
           </main>
         </div>
@@ -308,13 +219,17 @@
 
 <script>
 // import MyComponent from './components/DummyBoot.vue';
+import Lesson from './components/Lesson.vue';
 
 export default {
   name: 'App',
+  components: {
+    Lesson
+  },
   data() {
     return {
       // Initializing data properties
-      lessons: null, // Holds lesson data retrieved from lessons.json
+      lessons: [], // Holds lesson data retrieved from lessons.json
       cart: {}, // Keeps track of items in the cart
       formData: { // Form data for customer details
         name: "",
@@ -452,6 +367,9 @@ export default {
     // Filter lessons based on the search query
     filteredLessons() {
       console.log("filtered triggered!")
+      if (!this.lessons) {
+        return []; // Return an empty array if lessons is null
+      }
       // Gather all the necessary data
       const LESSONS = this.lessons;
       const CATEGORIES_TO_SEARCH = ['subject', 'location', 'price', 'spaces'];
