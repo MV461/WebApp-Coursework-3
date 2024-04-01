@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "subject": "English",
+        "location": "Dubai Marina",
+        "price": 150,
+        "spaces": 8,
+        "icon": "fa-solid fa-book-reader fa-4x"
+    },
+    {
+        "id": 2,
+        "subject": "Maths",
+        "location": "Jumeirah",
+        "price": 250,
+        "spaces": 17,
+        "icon": "fa-solid fa-calculator fa-4x"
+    },
+    {
+        "id": 3,
+        "subject": "Chemistry",
+        "location": "Barsha Heights",
+        "price": 100,
+        "spaces": 12,
+        "icon": "fa-solid fa-vial fa-4x"
+    },
+    {
+        "id": 4,
+        "subject": "Physics",
+        "location": "Downtown Dubai",
+        "price": 1200,
+        "spaces": 6,
+        "icon": "fa-solid fa-wave-square fa-4x"
+    },
+    {
+        "id": 5,
+        "subject": "Biology",
+        "location": "Al Nahda",
+        "price": 450,
+        "spaces": 14,
+        "icon": "fa-solid fa-dna fa-4x"
+    },
+    {
+        "id": 6,
+        "subject": "Football",
+        "location": "Sports City",
+        "price": 300,
+        "spaces": 19,
+        "icon": "fa-regular fa-futbol fa-4x"
+    },
+    {
+        "id": 7,
+        "subject": "Basketball",
+        "location": "Mirdif",
+        "price": 550,
+        "spaces": 10,
+        "icon": "fa-solid fa-basketball fa-4x"
+    },
+    {
+        "id": 8,
+        "subject": "MMA",
+        "location": "Deira",
+        "price": 700,
+        "spaces": 7,
+        "icon": "fa-solid fa-hand-fist fa-4x"
+    },
+    {
+        "id": 9,
+        "subject": "Music",
+        "location": "Palm Jumeirah",
+        "price": 1800,
+        "spaces": 15,
+        "icon": "fa-solid fa-music fa-4x"
+    },
+    {
+        "id": 10,
+        "subject": "Art",
+        "location": "Al Barsha",
+        "price": 150,
+        "spaces": 5,
+        "icon": "fa-solid fa-palette fa-4x"
+    }
+]
